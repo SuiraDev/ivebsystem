@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ivebsystem.com.br/sitemap.xml
+
