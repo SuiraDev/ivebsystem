@@ -7,16 +7,22 @@
   --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
 }
 
-/* Design System Dark - Variáveis CSS */
+/* Design System - Variáveis CSS */
 :root {
-  /* Primary Colors */
-  --color-primary-base: #0ea5e9;
+  /* Primary Colors (Inspiração: #3b82f6) */
+  --color-primary-base: #0ea5e9; /* sky-500 - manter compatibilidade */
+  --color-primary-600: #3b82f6; /* blue-600 - inspiração */
+  --color-primary-500: #3b82f6;
   --color-primary-light: #38bdf8;
   --color-primary-lighter: #7dd3fc;
   --color-primary-dark: #0284c7;
   --color-primary-darker: #0369a1;
 
-  /* Neutral Colors */
+  /* Secondary Colors (Inspiração: #7c3aed) */
+  --color-secondary-500: #7c3aed; /* purple-500 - inspiração */
+  --color-secondary-600: #7c3aed;
+
+  /* Neutral Colors - Dark Theme (padrão) */
   --color-bg-primary: #0a0e1a;
   --color-bg-secondary: #1a1f2e;
   --color-bg-tertiary: #252b3d;
@@ -24,6 +30,14 @@
   --color-text-secondary: #9ca3af;
   --color-text-muted: #6b7280;
   --color-border: #374151;
+
+  /* Neutral Colors - Light Theme (landing page) */
+  --color-light-bg-primary: #ffffff;
+  --color-light-bg-secondary: #f8fafc; /* slate-50 */
+  --color-light-text-primary: #0f172a; /* slate-900 */
+  --color-light-text-secondary: #475569; /* slate-600 */
+  --color-light-text-muted: #64748b; /* slate-500 */
+  --color-light-border: #e2e8f0; /* slate-200 */
 
   /* Accent Colors */
   --color-code-bg: #1e293b;
@@ -53,16 +67,24 @@
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
 
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-  --spacing-3xl: 4rem;
-  --spacing-4xl: 6rem;
-  --spacing-5xl: 8rem;
+  /* Grid System - Base 64px para cálculos matemáticos */
+  --grid-unit: 64px;
+  --grid-half: calc(var(--grid-unit) / 2);
+  --grid-quarter: calc(var(--grid-unit) / 4);
+  --grid-double: calc(var(--grid-unit) * 2);
+  --grid-triple: calc(var(--grid-unit) * 3);
+  --grid-quad: calc(var(--grid-unit) * 4);
+
+  /* Spacing - baseado no grid */
+  --spacing-xs: var(--grid-quarter); /* 16px */
+  --spacing-sm: var(--grid-half); /* 32px */
+  --spacing-md: var(--grid-unit); /* 64px */
+  --spacing-lg: var(--grid-double); /* 128px */
+  --spacing-xl: var(--grid-triple); /* 192px */
+  --spacing-2xl: var(--grid-quad); /* 256px */
+  --spacing-3xl: calc(var(--grid-unit) * 6); /* 384px */
+  --spacing-4xl: calc(var(--grid-unit) * 8); /* 512px */
+  --spacing-5xl: calc(var(--grid-unit) * 12); /* 768px */
 
   /* Border Radius */
   --radius-sm: 0.375rem;
@@ -122,12 +144,125 @@ body {
   color: white;
 }
 
+/* Landing Page - Global Grid System */
+.landing-page {
+  --grid-size: 64px;
+  position: relative;
+}
+
+.landing-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: 0 0;
+}
+
+/* Utilitários de grid - calculam posições baseadas no grid */
+.grid-align-x {
+  padding-left: calc(var(--grid-size) * var(--grid-x, 1));
+  padding-right: calc(var(--grid-size) * var(--grid-x, 1));
+}
+
+.grid-align-y {
+  padding-top: calc(var(--grid-size) * var(--grid-y, 1));
+  padding-bottom: calc(var(--grid-size) * var(--grid-y, 1));
+}
+
+.grid-col {
+  width: calc(var(--grid-size) * var(--grid-cols, 1));
+}
+
 /* Landing Page Styles */
 .bg-grid-pattern {
   background-image: 
-    linear-gradient(to right, rgba(14, 165, 233, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.bg-grid-pattern-light {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Grid com separadores e efeito vinheta */
+.bg-grid-separator {
+  position: relative;
+}
+
+.bg-grid-separator::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    /* Linhas principais a cada 4 células (256px) - muito sutis */
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    /* Linhas secundárias a cada célula (64px) - imperceptíveis */
+    linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+  background-size: 
+    256px 256px,
+    256px 256px,
+    64px 64px,
+    64px 64px;
+  background-position: 0 0, 0 0, 0 0, 0 0;
+  /* Efeito vinheta - fade nas bordas */
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-grid-separator > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Separadores entre elementos */
+.separator-line {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.1) 80%, transparent);
+}
+
+.separator-vertical {
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.1) 80%, transparent);
+}
+
+/* Padronização de margens para todas as sections */
+.section-container {
+  width: 100%;
+  max-width: 1280px; /* max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 5vw, 1.5rem); /* Responsivo: 16px a 24px */
+  padding-right: clamp(1rem, 5vw, 1.5rem);
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: clamp(1.5rem, 5vw, 2rem);
+    padding-right: clamp(1.5rem, 5vw, 2rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 /* Smooth scroll behavior */
@@ -212,4 +347,16 @@ pre {
   font-size: 0.875rem;
   line-height: 1.7;
   overflow-x: auto;
+}
+
+/* Cursor Gravity Effect */
+.cursor-gravity-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
 }

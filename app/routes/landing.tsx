@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { redirect, useActionData } from "react-router";
 import { sanitizeInput, validateFormData, type FormData } from "~/utils/validation";
 import { getOrganizationSchemaJSON } from "~/utils/schema";
+import { useCursorGravity } from "~/hooks/use-cursor-gravity";
 import {
   ProblemSection,
   SolutionSection,
@@ -126,6 +127,7 @@ _Enviado através do formulário da landing page_`;
 export default function Landing() {
   const actionData = useActionData<typeof action>();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const cursorCanvasRef = useCursorGravity();
 
   const scrollToForm = () => {
     const formElement = document.getElementById("formulario");
@@ -147,11 +149,18 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e1a] overflow-x-hidden w-full">
+    <div className="min-h-screen bg-[#0a0e1a] overflow-x-hidden w-full landing-page relative">
       {/* Schema.org JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: getOrganizationSchemaJSON() }}
+      />
+      
+      {/* Cursor Gravity Effect */}
+      <canvas
+        ref={cursorCanvasRef}
+        className="cursor-gravity-canvas"
+        aria-hidden="true"
       />
       
       {/* Header */}
@@ -170,7 +179,7 @@ export default function Landing() {
       />
 
       {/* Main Content */}
-      <main>
+      <main className="relative z-10">
         <HeroSection onScrollToForm={scrollToForm} />
         <ProblemSection />
         <SolutionSection />

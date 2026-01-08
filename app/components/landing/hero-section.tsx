@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { Button, Container } from "~/components";
+import { Button } from "~/components";
 import { useScrollAnimation } from "~/hooks/use-scroll-animation";
 
 interface HeroSectionProps {
@@ -12,122 +12,112 @@ export function HeroSection({ onScrollToForm }: HeroSectionProps) {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center bg-[#0a0e1a] overflow-hidden w-full pt-20 md:pt-24"
+      className="relative min-h-screen pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-[#0a0e1a] bg-grid-separator"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-950/20 via-transparent to-blue-950/20" />
-      
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '80px 80px'
-        }}
-      />
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-b from-sky-950/20 to-transparent -z-10 rounded-bl-[100px]" />
 
-      <Container className="relative z-10 w-full">
-        <div 
-          className={`max-w-7xl mx-auto text-white transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          {/* Badge */}
-          <div 
-            className={`inline-flex items-center gap-2 border border-white/10 bg-white/5 px-6 py-2 mb-12 mt-2 transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}
-          >
-            <Icon icon="mdi:lightning-bolt" className="w-4 h-4 text-sky-400" aria-hidden="true" />
-            <span className="text-sm font-medium text-sky-400 tracking-wider uppercase">
-              Tecnologia sob demanda
-            </span>
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+        {/* Left Content */}
+        <div className="space-y-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/20 bg-sky-500/10 text-sky-400 text-xs font-semibold tracking-wide uppercase">
+            <span className="flex h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
+            🚀 Tecnologia sob demanda
           </div>
-
-          {/* Headline */}
-          <h1 
-            className={`text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] mb-8 tracking-tight transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            Crie seu software
-            <br />
-            <span className="bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          
+          <h1 className="text-4xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1]">
+            Crie seu software{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-400">
               sem investir R$ 200k+
             </span>
           </h1>
-
-          {/* Description */}
-          <p 
-            className={`text-xl md:text-2xl text-white/60 max-w-3xl mb-16 leading-relaxed font-light transition-all duration-1000 delay-500 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
+          
+          <p className="text-lg text-white/60 leading-relaxed max-w-lg">
             Desenvolvemos software sob demanda com{" "}
             <span className="text-white font-semibold">custo mensal previsível</span>
             , exclusividade garantida e possibilidade de expansão para outros
             clientes do mesmo segmento.
           </p>
 
-          {/* Value props */}
-          <ul 
-            className={`grid grid-cols-1 sm:grid-cols-3 gap-8 mb-16 text-sm text-white/70 transition-all duration-1000 delay-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <li className="flex items-center gap-3">
-              <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-400 flex-shrink-0" aria-hidden="true" />
-              <span>Código 100% exclusivo</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Icon icon="mdi:rocket-launch" className="w-5 h-5 text-sky-400 flex-shrink-0" aria-hidden="true" />
-              <span>MVP rápido</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Icon icon="mdi:currency-usd" className="w-5 h-5 text-blue-400 flex-shrink-0" aria-hidden="true" />
-              <span>Sem aporte inicial</span>
-            </li>
-          </ul>
-
-          {/* Actions */}
-          <div 
-            className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <Button 
-              size="lg" 
-              variant="primary" 
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
               onClick={onScrollToForm}
-              className="group"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-sky-500 rounded-lg hover:bg-sky-600 hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/30 transition-all"
             >
-              Solicitar proposta gratuita
-              <Icon 
-                icon="mdi:arrow-right" 
-                className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              />
-            </Button>
-
-            <Button
-              size="lg"
-              variant="secondary"
-              onClick={() =>
-                document
-                  .getElementById("como-funciona")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              Solicitar Proposta Gratuita
+              <Icon icon="mdi:arrow-right" className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => document.getElementById("como-funciona")?.scrollIntoView({ behavior: "smooth" })}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-white/5 border border-white/10 rounded-lg hover:border-white/20 hover:bg-white/10 transition-all"
             >
-              Como funciona
-            </Button>
+              Como Funciona
+            </button>
           </div>
         </div>
-      </Container>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
-        <Icon icon="mdi:chevron-down" className="w-6 h-6 text-white/40" aria-hidden="true" />
+        {/* Right Visual - Dashboard Mockup */}
+        <div className="relative lg:h-[500px] w-full flex items-center justify-center">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-10 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-10 left-10 w-32 h-32 bg-sky-500/10 rounded-full blur-3xl"></div>
+
+          {/* Main Card */}
+          <div className="relative w-full max-w-md bg-slate-800/50 backdrop-blur-xl rounded-xl shadow-2xl shadow-black/50 border border-white/10 p-6 hover:scale-105 transition-transform duration-700 ease-out z-10">
+            <div className="flex items-center gap-4 mb-6 border-b border-white/10 pb-4">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+              </div>
+              <div className="h-2 w-32 bg-white/10 rounded-full"></div>
+            </div>
+            {/* Mockup Content */}
+            <div className="flex gap-4">
+              <div className="w-1/3 space-y-3">
+                <div className="h-20 bg-sky-500/20 rounded-lg w-full"></div>
+                <div className="h-8 bg-white/5 rounded-lg w-full"></div>
+                <div className="h-8 bg-white/5 rounded-lg w-full"></div>
+              </div>
+              <div className="w-2/3 space-y-4">
+                <div className="flex justify-between items-center">
+                  <div className="h-8 w-24 bg-white/10 rounded-md"></div>
+                  <div className="h-8 w-8 bg-sky-500/20 rounded-full flex items-center justify-center text-sky-400">
+                    <Icon icon="mdi:chart-line" className="w-4 h-4" />
+                  </div>
+                </div>
+                <div className="h-32 bg-gradient-to-br from-white/5 to-white/10 rounded-lg border border-white/10 flex items-end p-4 gap-2">
+                  <div className="w-1/4 h-1/3 bg-blue-400/30 rounded-t"></div>
+                  <div className="w-1/4 h-2/3 bg-blue-400/40 rounded-t"></div>
+                  <div className="w-1/4 h-1/2 bg-blue-400/50 rounded-t"></div>
+                  <div className="w-1/4 h-full bg-sky-500 rounded-t shadow-lg shadow-sky-500/20"></div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Floating Badge 1 */}
+            <div className="absolute -right-8 top-20 bg-slate-800/90 backdrop-blur-xl p-3 rounded-lg shadow-xl border border-white/10 flex items-center gap-3 animate-bounce" style={{ animationDuration: '3s' }}>
+              <div className="p-2 bg-green-500/20 text-green-400 rounded-md">
+                <Icon icon="mdi:code-xml" className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs text-white/40">Status</div>
+                <div className="text-sm font-semibold text-white">Clean Code</div>
+              </div>
+            </div>
+
+            {/* Floating Badge 2 */}
+            <div className="absolute -left-6 bottom-10 bg-slate-800/90 backdrop-blur-xl p-3 rounded-lg shadow-xl border border-white/10 flex items-center gap-3 animate-bounce" style={{ animationDuration: '4s' }}>
+              <div className="p-2 bg-purple-500/20 text-purple-400 rounded-md">
+                <Icon icon="mdi:rocket-launch" className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs text-white/40">Performance</div>
+                <div className="text-sm font-semibold text-white">99.9% Uptime</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

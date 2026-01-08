@@ -49,13 +49,13 @@ export function MobileMenu({ onScrollToForm, isOpen, onClose }: MobileMenuProps)
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-white/10">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <img 
                 src="/iveb-logo.svg" 
                 alt="iVebSystem Logo" 
-                className="h-10 w-auto"
+                className="h-8 w-auto"
               />
-              <span className="text-xl font-black text-white tracking-tight">ivebsystem</span>
+              <span className="text-lg font-semibold tracking-tight text-white">IVEBSYSTEM</span>
             </div>
             <button
               onClick={onClose}
@@ -73,7 +73,7 @@ export function MobileMenu({ onScrollToForm, isOpen, onClose }: MobileMenuProps)
                 <a
                   href="#como-funciona"
                   onClick={() => handleLinkClick("#como-funciona")}
-                  className="block py-3 text-lg font-semibold text-white/70 hover:text-white transition-colors uppercase tracking-wider border-b border-white/10"
+                  className="block py-3 text-base font-medium text-white/70 hover:text-sky-400 transition-colors border-b border-white/10"
                 >
                   Como Funciona
                 </a>
@@ -82,7 +82,7 @@ export function MobileMenu({ onScrollToForm, isOpen, onClose }: MobileMenuProps)
                 <a
                   href="#vantagens"
                   onClick={() => handleLinkClick("#vantagens")}
-                  className="block py-3 text-lg font-semibold text-white/70 hover:text-white transition-colors uppercase tracking-wider border-b border-white/10"
+                  className="block py-3 text-base font-medium text-white/70 hover:text-sky-400 transition-colors border-b border-white/10"
                 >
                   Vantagens
                 </a>
@@ -91,7 +91,7 @@ export function MobileMenu({ onScrollToForm, isOpen, onClose }: MobileMenuProps)
                 <a
                   href="#faq"
                   onClick={() => handleLinkClick("#faq")}
-                  className="block py-3 text-lg font-semibold text-white/70 hover:text-white transition-colors uppercase tracking-wider border-b border-white/10"
+                  className="block py-3 text-base font-medium text-white/70 hover:text-sky-400 transition-colors border-b border-white/10"
                 >
                   FAQ
                 </a>

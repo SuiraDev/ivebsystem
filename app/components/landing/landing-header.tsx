@@ -22,67 +22,78 @@ export function LandingHeader({
     }
   };
   return (
-    <header className="w-full border-b border-white/10 bg-[#0a0e1a]/98 backdrop-blur-xl fixed top-0 left-0 right-0 z-[100] overflow-x-hidden">
-      <Container className="w-full">
-        <nav className="flex items-center justify-between py-6">
-          <button
-            onClick={handleLogoClick}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
-            aria-label="Voltar ao topo"
+    <header className="fixed top-0 w-full z-50 bg-[#0a0e1a]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <button
+          onClick={handleLogoClick}
+          className="flex items-center gap-2 group"
+          aria-label="Voltar ao topo"
+        >
+          <img
+            src="/iveb-logo.svg"
+            alt="iVebSystem Logo"
+            className="h-8 w-auto"
+          />
+          <span className="text-lg font-semibold tracking-tighter text-white group-hover:text-sky-400 transition-colors">
+            IVEBSYSTEM
+          </span>
+        </button>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
+          <a
+            href="#como-funciona"
+            onClick={(e) => {
+              e.preventDefault();
+              onLinkClick("#como-funciona");
+            }}
+            className="hover:text-sky-400 transition-colors"
           >
-            <img
-              src="/iveb-logo.svg"
-              alt="iVebSystem Logo"
-              className="h-10 w-auto"
-            />
-            <span className="text-xl font-black text-white tracking-tight">
-              ivebsystem
-            </span>
-          </button>
-          <div className="hidden md:flex items-center gap-12">
-            <a
-              href="#como-funciona"
-              onClick={(e) => {
-                e.preventDefault();
-                onLinkClick("#como-funciona");
-              }}
-              className="text-sm font-semibold text-white/70 hover:text-white transition-colors uppercase tracking-wider"
-            >
-              Como Funciona
-            </a>
-            <a
-              href="#vantagens"
-              onClick={(e) => {
-                e.preventDefault();
-                onLinkClick("#vantagens");
-              }}
-              className="text-sm font-semibold text-white/70 hover:text-white transition-colors uppercase tracking-wider"
-            >
-              Vantagens
-            </a>
-            <a
-              href="#faq"
-              onClick={(e) => {
-                e.preventDefault();
-                onLinkClick("#faq");
-              }}
-              className="text-sm font-semibold text-white/70 hover:text-white transition-colors uppercase tracking-wider"
-            >
-              FAQ
-            </a>
-            <Button size="md" onClick={onScrollToForm}>
-              Começar Agora
-            </Button>
-          </div>
-          <button
-            className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
-            onClick={onMobileMenuOpen}
-            aria-label="Abrir menu"
+            Como Funciona
+          </a>
+          <a
+            href="#vantagens"
+            onClick={(e) => {
+              e.preventDefault();
+              onLinkClick("#vantagens");
+            }}
+            className="hover:text-sky-400 transition-colors"
           >
-            <Icon icon="mdi:menu" className="w-6 h-6" aria-hidden="true" />
-          </button>
+            Vantagens
+          </a>
+          <a
+            href="#faq"
+            onClick={(e) => {
+              e.preventDefault();
+              onLinkClick("#faq");
+            }}
+            className="hover:text-sky-400 transition-colors"
+          >
+            FAQ
+          </a>
         </nav>
-      </Container>
+
+        {/* Buttons */}
+        <div className="hidden md:flex items-center gap-4">
+          <Button
+            onClick={onScrollToForm}
+            variant="primary"
+            className="px-4 py-2 text-sm font-medium text-white bg-sky-500 rounded-lg hover:bg-sky-600 hover:shadow-lg hover:shadow-sky-500/20 transition-all"
+          >
+            Começar Agora
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
+          onClick={onMobileMenuOpen}
+          aria-label="Abrir menu"
+        >
+          <Icon icon="mdi:menu" className="w-6 h-6" aria-hidden="true" />
+        </button>
+      </div>
     </header>
   );
 }

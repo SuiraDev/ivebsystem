@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import { Container } from "~/components";
 import { useScrollAnimation } from "~/hooks/use-scroll-animation";
 
 const traditionalFeatures: string[] = [
@@ -21,78 +20,56 @@ export function ComparisonSection() {
     <section 
       id="comparacao"
       ref={ref} 
-      className="w-full min-h-screen bg-[#0a0e1a] border-t border-white/5 flex flex-col scroll-mt-24"
+      className="relative min-h-screen py-24 bg-[#0d1222] bg-grid-separator flex items-center scroll-mt-24"
     >
-      <Container className="w-full pt-32 pb-20">
-        <div className="max-w-7xl mx-auto text-white">
-          <div 
-            className={`transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-              Softhouse tradicional vs nosso modelo
-            </h2>
-          </div>
-        </div>
-      </Container>
-
-      <Container className="w-full flex-1">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 h-full">
-          {/* Traditional */}
-          <div 
-            className={`p-12 transition-all duration-1000 border-b md:border-b-0 md:border-r border-white/10 md:last:border-r-0 last:border-b-0 flex flex-col justify-center ${
-              isVisible 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 -translate-x-10'
-            }`}
-          >
-          <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-            <Icon icon="mdi:alert-circle" className="w-6 h-6 text-red-400" aria-hidden="true" />
-            <span>Softhouse</span>
-          </h3>
-          <ul className="space-y-4">
-            {traditionalFeatures.map((feature, index) => (
-              <li 
-                key={`traditional-${index}`}
-                className="flex items-center gap-3 text-white/60"
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <Icon icon="mdi:close-circle" className="w-5 h-5 text-red-400 flex-shrink-0" aria-hidden="true" />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
+      <div className="w-full max-w-7xl mx-auto px-6">
+        <div className="max-w-3xl mb-20">
+          <h2 className="text-4xl lg:text-5xl font-semibold text-white tracking-tight mb-6">
+            Softhouse tradicional vs nosso modelo
+          </h2>
+          <p className="text-xl text-white/60">Compare e veja a diferença</p>
         </div>
 
-          {/* Our Model */}
-          <div 
-            className={`p-12 transition-all duration-1000 flex flex-col justify-center ${
-              isVisible 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 translate-x-10'
-            }`}
-            style={{ transitionDelay: '200ms' }}
-          >
-          <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-            <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-400" aria-hidden="true" />
-            <span>Nosso modelo</span>
-          </h3>
-          <ul className="space-y-4">
-            {ourFeatures.map((feature, index) => (
-              <li 
-                key={`our-${index}`}
-                className="flex items-center gap-3 text-white/80"
-                style={{ transitionDelay: `${(index + 1) * 100}ms` }}
-              >
-                <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-400 flex-shrink-0" aria-hidden="true" />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="grid md:grid-cols-2 gap-12 md:gap-24">
+          <div className="relative">
+            <h3 className="text-2xl font-semibold text-white mb-8 flex items-center gap-3">
+              <Icon icon="mdi:close-circle" className="w-7 h-7 text-red-400" />
+              Softhouse
+            </h3>
+            <ul className="space-y-6">
+              {traditionalFeatures.map((feature, index) => (
+                <li 
+                  key={`traditional-${index}`}
+                  className="flex items-start gap-4"
+                >
+                  <Icon icon="mdi:close" className="w-5 h-5 text-red-400 flex-shrink-0 mt-1" />
+                  <span className="text-white/60 text-base">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="md:hidden separator-line my-12" />
+          </div>
+
+          <div className="relative">
+            <div className="hidden md:block absolute left-0 top-0 bottom-0 -ml-12 lg:-ml-12 separator-vertical" />
+            <h3 className="text-2xl font-semibold text-white mb-8 flex items-center gap-3">
+              <Icon icon="mdi:check-circle" className="w-7 h-7 text-green-400" />
+              Nosso modelo
+            </h3>
+            <ul className="space-y-6">
+              {ourFeatures.map((feature, index) => (
+                <li 
+                  key={`our-${index}`}
+                  className="flex items-start gap-4"
+                >
+                  <Icon icon="mdi:check" className="w-5 h-5 text-green-400 flex-shrink-0 mt-1" />
+                  <span className="text-white/80 text-base">{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

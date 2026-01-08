@@ -1,4 +1,4 @@
-import { Container, FAQAccordion } from "~/components";
+import { FAQAccordion } from "~/components";
 import { useScrollAnimation } from "~/hooks/use-scroll-animation";
 
 interface FAQItem {
@@ -56,26 +56,22 @@ export function FAQSection() {
     <section 
       id="faq" 
       ref={ref}
-      className="w-full bg-[#0d1222] pt-40 pb-32 border-t border-white/5 scroll-mt-24"
+      className="relative min-h-screen py-24 bg-[#0d1222] bg-grid-separator flex items-center scroll-mt-24"
     >
-      <Container className="w-full">
-        <div className="max-w-5xl mx-auto text-white">
-          <div 
-            className={`mb-16 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-              Perguntas Frequentes
-            </h2>
-            <p className="text-xl text-white/60 leading-relaxed font-light">
-              Tire suas dúvidas sobre nosso modelo de negócio
-            </p>
-          </div>
-
-          <FAQAccordion items={faqItems} />
+      <div className="w-full max-w-7xl mx-auto px-6">
+        <div className="w-full max-w-4xl mx-auto">
+        <div className="mb-16">
+          <h2 className="text-4xl lg:text-5xl font-semibold text-white tracking-tight mb-6">
+            Perguntas Frequentes
+          </h2>
+          <p className="text-xl text-white/60">
+            Tire suas dúvidas sobre nosso modelo de negócio
+          </p>
         </div>
-      </Container>
+
+        <FAQAccordion items={faqItems} />
+        </div>
+      </div>
     </section>
   );
 }

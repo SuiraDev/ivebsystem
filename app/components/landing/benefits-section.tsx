@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import { Container } from "~/components";
 import { useScrollAnimation } from "~/hooks/use-scroll-animation";
 
 interface Benefit {
@@ -15,35 +14,35 @@ const benefits: Benefit[] = [
     id: "no-investment",
     title: "Sem Alto Investimento Inicial",
     description: "Não precisa desembolsar R$ 50K+ de uma vez. Pagamento parcelado e acessível.",
-    icon: "mdi:currency-usd-off",
+    icon: "lucide:dollar-sign",
     highlight: true,
   },
   {
     id: "installments",
     title: "Pagamento Parcelado",
     description: "Divida o investimento em parcelas que cabem no seu orçamento mensal.",
-    icon: "mdi:credit-card-multiple",
+    icon: "lucide:credit-card",
     highlight: true,
   },
   {
     id: "guarantee",
     title: "Garantia de Entrega",
     description: "Contrato com garantia de entrega do software conforme especificado.",
-    icon: "mdi:shield-check",
+    icon: "lucide:shield-check",
     highlight: true,
   },
   {
     id: "partnership",
     title: "Parceria Contínua",
     description: "Não é apenas entrega. Parceria para manutenção, evolução e crescimento.",
-    icon: "mdi:handshake",
+    icon: "lucide:handshake",
     highlight: false,
   },
   {
     id: "expansion",
     title: "Extensão e Comercialização",
     description: "Possibilidade de estender o projeto e comercializar para outras empresas do segmento.",
-    icon: "mdi:chart-line",
+    icon: "lucide:chart-line",
     highlight: false,
   },
 ];
@@ -55,60 +54,54 @@ export function BenefitsSection() {
     <section
       id="vantagens"
       ref={ref}
-      className="w-full py-20 bg-[#0a0e1a] border-t border-white/5 scroll-mt-24"
+      className="relative min-h-screen py-24 bg-[#0d1222] bg-grid-separator flex items-center scroll-mt-24"
     >
-      <Container className="w-full">
-        <div className="max-w-7xl mx-auto">
-          <div
-            className={`text-center text-white mb-16 transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-              Vantagens do Nosso Modelo
-            </h2>
-            <p className="text-xl text-white/60 max-w-4xl mx-auto leading-relaxed font-light">
-              Entenda por que nosso modelo de desenvolvimento sob demanda é a melhor escolha
-              para transformar sua ideia em realidade.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-3xl mb-20">
+          <h2 className="text-4xl lg:text-5xl font-semibold text-white tracking-tight mb-6">
+            Vantagens do Nosso Modelo
+          </h2>
+          <p className="text-xl text-white/60 leading-relaxed">
+            Entenda por que nosso modelo de desenvolvimento sob demanda é a melhor escolha
+            para transformar sua ideia em realidade.
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <div
-                key={benefit.id}
-                className={`p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-1000 group ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                }`}
-                style={{ transitionDelay: `${(index + 1) * 100}ms` }}
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-sky-500/20 to-blue-500/20 flex items-center justify-center rounded-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <Icon
-                      icon={benefit.icon}
-                      className="w-6 h-6 text-sky-400"
-                      aria-hidden="true"
-                    />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 md:gap-x-16 gap-y-12">
+          {benefits.map((benefit, index) => (
+            <div key={benefit.id} className="group relative">
+              {(index % 3 !== 0 && index > 0) && (
+                <div className="hidden lg:block absolute left-0 top-0 bottom-0 -ml-6 md:-ml-8 separator-vertical" />
+              )}
+              {(index % 2 !== 0 && index > 0) && (
+                <div className="hidden md:block lg:hidden absolute left-0 top-0 bottom-0 -ml-6 md:-ml-8 separator-vertical" />
+              )}
+              <div className="flex items-start gap-4 mb-4">
+                <Icon
+                  icon={benefit.icon}
+                  className="w-10 h-10 text-green-400 flex-shrink-0 mt-1"
+                />
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <h3 className="text-xl font-semibold text-white">{benefit.title}</h3>
+                    {benefit.highlight && (
+                      <span className="px-2 py-0.5 text-xs font-semibold bg-sky-500/20 text-sky-400 rounded">
+                        Destaque
+                      </span>
+                    )}
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="text-xl font-bold text-white">{benefit.title}</h3>
-                      {benefit.highlight && (
-                        <span className="px-2 py-1 text-xs font-semibold bg-sky-500/20 text-sky-400 border border-sky-500/30 rounded">
-                          Destaque
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-white/60 text-base leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </div>
+                  <p className="text-white/50 text-base leading-relaxed">
+                    {benefit.description}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
+              {index < benefits.length - 1 && (
+                <div className="md:hidden separator-line mt-8" />
+              )}
+            </div>
+          ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

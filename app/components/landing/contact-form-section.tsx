@@ -3,7 +3,6 @@ import { Form, useActionData, useNavigation } from "react-router";
 import { useState, useCallback, useRef } from "react";
 import {
   Button,
-  Container,
   FormField,
   Input,
   Textarea,
@@ -142,54 +141,62 @@ export function ContactFormSection() {
     <section
       id="formulario"
       ref={ref}
-      className="w-full bg-[#0a0e1a] pt-40 pb-32 border-t border-white/5 scroll-mt-24"
+      className="relative min-h-screen py-16 md:py-24 bg-[#0a0e1a] bg-grid-separator flex items-center scroll-mt-24 overflow-hidden"
     >
-      <Container className="w-full">
-        <div className="max-w-5xl mx-auto">
-          <div
-            className={`text-center text-white mb-16 transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-              Pronto para transformar sua ideia em realidade?
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0  h-[600px] bg-sky-600/10 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 left-0  h-[600px] bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+
+      <div className="max-w-7xl mx-auto px-6 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
+          {/* Left: CTA Text */}
+          <div className="text-white">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6 md:mb-8">
+              Pronto para <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-400">
+                Transformar sua Ideia?
+              </span>
             </h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto leading-relaxed font-light mb-8">
+            <p className="text-lg md:text-xl text-white/60 mb-8 md:mb-12">
               Solicite uma proposta personalizada e sem compromisso. Nossa equipe vai analisar seu
               projeto e apresentar uma solução sob medida para suas necessidades.
             </p>
-            <div className="flex flex-wrap justify-center gap-8 text-white/70 text-sm">
-              <span className="flex items-center gap-2">
-                <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-400" />
-                Proposta em 24h
-              </span>
-              <span className="flex items-center gap-2">
-                <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-400" />
-                Sem compromisso
-              </span>
-              <span className="flex items-center gap-2">
-                <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-400" />
-                100% Gratuito
-              </span>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <span className="text-base text-white/70">Proposta em 24h</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <span className="text-base text-white/70">Sem compromisso</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <span className="text-base text-white/70">100% Gratuito</span>
+              </div>
             </div>
           </div>
 
-          <div
-            className={`border border-white/10 bg-white/5 p-6 md:p-12 transition-all duration-1000 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
+          {/* Right: Contact Form */}
+          <div className="text-white relative">
+            <div className="hidden lg:block absolute left-0 top-0 bottom-0 -ml-8 lg:-ml-12 separator-vertical" />
+            <div className="lg:hidden separator-line mb-8" />
+            <div className="mb-6 md:mb-8">
+              <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3">Vamos Conversar?</h3>
+              <p className="text-sm md:text-base text-white/60">Preencha o formulário e entraremos em contato em breve.</p>
+            </div>
+
             <Form
               ref={formRef}
               method="post"
-              className="space-y-8"
+              className="space-y-4"
               onSubmit={handleSubmit}
               noValidate
             >
               {/* Erro geral */}
               {actionData?.error && (
                 <div
-                  className="bg-red-500/20 border-2 border-red-500/50 text-red-300 px-6 py-4 rounded"
+                  className="bg-red-500/20 border-2 border-red-500/50 text-red-300 px-4 py-3 rounded-lg text-sm"
                   role="alert"
                   aria-live="polite"
                 >
@@ -197,28 +204,28 @@ export function ContactFormSection() {
                 </div>
               )}
 
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <FormField
-                    label="Nome Completo"
+              <div>
+                <FormField
+                  label="Nome Completo"
+                  required
+                  error={hasError("name") ? getError("name") : undefined}
+                >
+                  <Input
+                    type="text"
+                    name="name"
+                    onBlur={handleBlur}
+                    placeholder="Seu nome completo"
                     required
-                    error={hasError("name") ? getError("name") : undefined}
-                  >
-                    <Input
-                      type="text"
-                      name="name"
-                      onBlur={handleBlur}
-                      placeholder="Seu nome completo"
-                      required
-                      aria-invalid={hasError("name")}
-                      aria-describedby={hasError("name") ? "name-error" : undefined}
-                      className={`w-full bg-white/5 border-white/10 focus:border-sky-400 ${
-                        hasError("name") ? "border-red-500/50 focus:border-red-500" : ""
-                      }`}
-                    />
-                  </FormField>
-                </div>
+                    aria-invalid={hasError("name")}
+                    aria-describedby={hasError("name") ? "name-error" : undefined}
+                    className={`w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 outline-none transition-all text-sm placeholder:text-white/30 ${
+                      hasError("name") ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""
+                    }`}
+                  />
+                </FormField>
+              </div>
 
+              <div className="grid grid-cols-2 gap-4">
                 <div>
                   <FormField
                     label="Email"
@@ -233,15 +240,13 @@ export function ContactFormSection() {
                       required
                       aria-invalid={hasError("email")}
                       aria-describedby={hasError("email") ? "email-error" : undefined}
-                      className={`w-full bg-white/5 border-white/10 focus:border-sky-400 ${
-                        hasError("email") ? "border-red-500/50 focus:border-red-500" : ""
-                      }`}
+                    className={`w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 outline-none transition-all text-sm placeholder:text-white/30 ${
+                      hasError("email") ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""
+                    }`}
                     />
                   </FormField>
                 </div>
-              </div>
 
-              <div className="grid md:grid-cols-2 gap-8 border-t border-white/10 pt-8">
                 <div>
                   <FormField
                     label="Telefone"
@@ -252,53 +257,55 @@ export function ContactFormSection() {
                       type="tel"
                       name="phone"
                       onBlur={handleBlur}
-                      placeholder="(11) 99999-9999"
+                      placeholder="(00) 00000-0000"
                       required
                       aria-invalid={hasError("phone")}
                       aria-describedby={hasError("phone") ? "phone-error" : undefined}
-                      className={`w-full bg-white/5 border-white/10 focus:border-sky-400 ${
-                        hasError("phone") ? "border-red-500/50 focus:border-red-500" : ""
-                      }`}
-                    />
-                  </FormField>
-                </div>
-
-                <div>
-                  <FormField
-                    label="Empresa"
-                    error={hasError("company") ? getError("company") : undefined}
-                  >
-                    <Input
-                      type="text"
-                      name="company"
-                      onBlur={handleBlur}
-                      placeholder="Nome da sua empresa (opcional)"
-                      aria-invalid={hasError("company")}
-                      aria-describedby={hasError("company") ? "company-error" : undefined}
-                      className={`w-full bg-white/5 border-white/10 focus:border-sky-400 ${
-                        hasError("company") ? "border-red-500/50 focus:border-red-500" : ""
+                      className={`w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 outline-none transition-all text-sm placeholder:text-white/30 ${
+                        hasError("phone") ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""
                       }`}
                     />
                   </FormField>
                 </div>
               </div>
 
-              <FormField
-                label="Conte-nos sobre seu projeto"
-                error={hasError("message") ? getError("message") : undefined}
-              >
-                <Textarea
-                  name="message"
-                  onBlur={handleBlur}
-                  rows={6}
-                  placeholder="Descreva suas necessidades, o problema que você quer resolver, ou qualquer informação relevante sobre seu projeto..."
-                  aria-invalid={hasError("message")}
-                  aria-describedby={hasError("message") ? "message-error" : undefined}
-                  className={`w-full bg-white/5 border-white/10 focus:border-sky-400 resize-none ${
-                    hasError("message") ? "border-red-500/50 focus:border-red-500" : ""
-                  }`}
-                />
-              </FormField>
+              <div>
+                <FormField
+                  label="Empresa"
+                  error={hasError("company") ? getError("company") : undefined}
+                >
+                  <Input
+                    type="text"
+                    name="company"
+                    onBlur={handleBlur}
+                    placeholder="Nome da sua empresa (opcional)"
+                    aria-invalid={hasError("company")}
+                    aria-describedby={hasError("company") ? "company-error" : undefined}
+                    className={`w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 outline-none transition-all text-sm placeholder:text-white/30 ${
+                      hasError("company") ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""
+                    }`}
+                  />
+                </FormField>
+              </div>
+
+              <div>
+                <FormField
+                  label="Mensagem"
+                  error={hasError("message") ? getError("message") : undefined}
+                >
+                  <Textarea
+                    name="message"
+                    onBlur={handleBlur}
+                    rows={3}
+                    placeholder="Conte um pouco sobre seu projeto..."
+                    aria-invalid={hasError("message")}
+                    aria-describedby={hasError("message") ? "message-error" : undefined}
+                    className={`w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 outline-none transition-all text-sm resize-none placeholder:text-white/30 ${
+                      hasError("message") ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""
+                    }`}
+                  />
+                </FormField>
+              </div>
 
               <Button
                 type="submit"
@@ -306,7 +313,7 @@ export function ContactFormSection() {
                 disabled={isSubmitting}
                 size="lg"
                 variant="primary"
-                className="group"
+                className="group w-full py-3 bg-sky-500 text-white rounded-lg font-semibold text-sm hover:bg-sky-600 transition-colors shadow-lg hover:shadow-sky-500/20 mt-2"
                 aria-busy={isSubmitting}
               >
                 {isSubmitting ? (
@@ -316,23 +323,25 @@ export function ContactFormSection() {
                   </span>
                 ) : (
                   <>
-                    Enviar Solicitação - Receber Proposta em 24h
+                    Enviar Mensagem
                     <Icon
                       icon="mdi:arrow-right"
-                      className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1"
+                      className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
                     />
                   </>
                 )}
               </Button>
 
-              <p className="text-center text-sm text-white/40">
-                Ao enviar, você concorda em receber uma proposta personalizada. Seus dados
-                estão seguros e não serão compartilhados.
-              </p>
+              <div className="text-center">
+                <span className="text-xs text-white/40 flex items-center justify-center gap-1">
+                  <Icon icon="mdi:check-circle" className="w-3 h-3" />
+                  Resposta em até 24 horas
+                </span>
+              </div>
             </Form>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

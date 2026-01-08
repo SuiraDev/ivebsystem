@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import { Container } from "~/components";
 import { useScrollAnimation } from "~/hooks/use-scroll-animation";
 
 interface AboutData {
@@ -36,112 +35,57 @@ export function AboutSection() {
     <section
       id="sobre"
       ref={ref}
-      className="w-full py-20 bg-[#0a0e1a] border-t border-white/5 scroll-mt-24"
+      className="relative min-h-screen py-24 bg-[#0a0e1a] bg-grid-separator flex items-center scroll-mt-24"
     >
-      <Container className="w-full">
-        <div className="max-w-7xl mx-auto">
-          <div
-            className={`text-center text-white mb-16 transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-              Sobre a iVebSystem
-            </h2>
-            {aboutData.tagline && (
-              <p className="text-xl text-sky-400 font-semibold mb-4">{aboutData.tagline}</p>
-            )}
-          </div>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-3xl mb-20">
+          <h2 className="text-4xl lg:text-5xl font-semibold text-white tracking-tight mb-6">
+            Sobre a iVebSystem
+          </h2>
+          {aboutData.tagline && (
+            <p className="text-xl text-sky-400">{aboutData.tagline}</p>
+          )}
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            {/* Coluna Esquerda */}
-            <div
-              className={`space-y-8 transition-all duration-1000 delay-200 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
-              {aboutData.history && (
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                    <Icon icon="mdi:history" className="w-6 h-6 text-sky-400" aria-hidden="true" />
-                    Nossa História
-                  </h3>
-                  <p className="text-white/60 leading-relaxed">{aboutData.history}</p>
-                </div>
-              )}
-
+        <div className="grid lg:grid-cols-2 gap-x-16 md:gap-x-24 gap-y-12 md:gap-y-16">
+          <div className="space-y-12 md:space-y-16">
+            {aboutData.history && (
               <div>
-                <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                  <Icon icon="mdi:target" className="w-6 h-6 text-sky-400" aria-hidden="true" />
-                  Missão
-                </h3>
-                <p className="text-white/60 leading-relaxed">{aboutData.mission}</p>
+                <h3 className="text-2xl font-semibold text-white mb-6">Nossa História</h3>
+                <p className="text-white/60 leading-relaxed text-base">{aboutData.history}</p>
               </div>
+            )}
 
-              {aboutData.vision && (
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                    <Icon icon="mdi:eye" className="w-6 h-6 text-sky-400" aria-hidden="true" />
-                    Visão
-                  </h3>
-                  <p className="text-white/60 leading-relaxed">{aboutData.vision}</p>
-                </div>
-              )}
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-6">Missão</h3>
+              <p className="text-white/60 leading-relaxed text-base">{aboutData.mission}</p>
             </div>
 
-            {/* Coluna Direita */}
-            <div
-              className={`space-y-8 transition-all duration-1000 delay-400 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
+            {aboutData.vision && (
               <div>
-                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                  <Icon icon="mdi:heart" className="w-6 h-6 text-sky-400" aria-hidden="true" />
-                  Nossos Valores
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {aboutData.values.map((value) => (
-                    <span
-                      key={value}
-                      className="px-4 py-2 bg-white/5 border border-white/10 text-white/80 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors"
-                    >
-                      {value}
-                    </span>
-                  ))}
-                </div>
+                <h3 className="text-2xl font-semibold text-white mb-6">Visão</h3>
+                <p className="text-white/60 leading-relaxed text-base">{aboutData.vision}</p>
               </div>
+            )}
+            <div className="lg:hidden separator-line" />
+          </div>
 
-              {aboutData.founder && (
-                <div className="p-6 border border-white/10 bg-white/5 rounded-lg">
-                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                    <Icon icon="mdi:account" className="w-5 h-5 text-sky-400" aria-hidden="true" />
-                    Fundador
-                  </h3>
-                  <div className="flex items-start gap-4">
-                    {aboutData.founder.image && (
-                      <img
-                        src={aboutData.founder.image}
-                        alt={aboutData.founder.name}
-                        className="w-16 h-16 rounded-full object-cover border-2 border-sky-500/30"
-                      />
-                    )}
-                    <div>
-                      <p className="text-white font-semibold">{aboutData.founder.name}</p>
-                      <p className="text-white/60 text-sm mb-2">{aboutData.founder.role}</p>
-                      {aboutData.founder.bio && (
-                        <p className="text-white/60 text-sm leading-relaxed">
-                          {aboutData.founder.bio}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
+          <div className="space-y-12 md:space-y-16 relative">
+            <div className="hidden lg:block absolute left-0 top-0 bottom-0 -ml-8 md:-ml-12 separator-vertical" />
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-6">Nossos Valores</h3>
+              <ul className="space-y-3">
+                {aboutData.values.map((value) => (
+                  <li key={value} className="flex items-center gap-3">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5 text-sky-400 flex-shrink-0" />
+                    <span className="text-white/80 text-base">{value}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
