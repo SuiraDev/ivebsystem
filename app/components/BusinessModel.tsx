@@ -11,12 +11,11 @@ export const BusinessModel = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-20 animate-slide-up">
                     <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4">
-                        O Futuro é{" "}
-                        <span className="gradient-text">Sob Demanda</span>
+                        O Futuro do{" "}
+                        <span className="gradient-text">Seu Negócio</span>
                     </h2>
                     <p className="text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed">
-                        Eliminamos a barreira de entrada da alta tecnologia.
-                        Compare nosso modelo com o mercado tradicional.
+                        Transformamos complexidade técnica em vantagem competitiva sustentável.
                     </p>
                 </div>
 
