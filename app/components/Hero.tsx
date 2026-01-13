@@ -39,7 +39,7 @@ export const Hero = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
           </span>
-          <span className="text-xs font-medium text-neutral-300 tracking-wide uppercase">Consultoria Técnica & Engenharia de Elite</span>
+          <span className="text-xs font-medium text-neutral-300 tracking-wide uppercase">Construindo o Futuro com</span>
         </div>
 
         <h1 className="text-5xl md:text-7xl font-semibold tracking-tight leading-tight mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
@@ -56,7 +56,7 @@ export const Hero = () => {
             href={`https://wa.me/5585986178977?text=${encodeURIComponent("Olá! Gostaria de um diagnóstico técnico para meu negócio.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative px-8 py-3.5 rounded-full bg-white text-black font-bold text-sm overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            className="group relative px-8 py-3.5 rounded-full bg-white text-black font-bold text-sm overflow-hidden transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-brand-cyan/20 to-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <span className="relative flex items-center gap-2">
@@ -66,6 +66,7 @@ export const Hero = () => {
           </a>
           <a href="#model" className="px-8 py-3.5 rounded-full border border-white/10 text-white font-medium text-sm hover:bg-white/5 hover:border-white/20 transition-all flex items-center gap-2 opacity-60 hover:opacity-100">
             Conhecer o Modelo
+            <Icon icon="lucide:arrow-down" width="18" />
           </a>
         </div>
       </div>

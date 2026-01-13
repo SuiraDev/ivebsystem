@@ -19,9 +19,6 @@ export const ScrollProgress = () => {
 
   return (
     <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-4 group hidden md:flex">
-      <div className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest vertical-text rotate-180">
-        Progress
-      </div>
       <div className="h-48 w-[2px] bg-white/5 rounded-full overflow-hidden relative">
         <div 
           className="absolute top-0 left-0 w-full bg-gradient-to-b from-brand-cyan to-brand-purple transition-all duration-150 ease-out"
