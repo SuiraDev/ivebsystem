@@ -67,7 +67,7 @@ export const BusinessModel = () => {
                                 </li>
                             </ul>
                             <a
-                                href={`https://wa.me/5511999999999?text=${encodeURIComponent("Olá! Gostaria de um Diagnóstico Técnico (Camada 1).")}`}
+                                href={`https://wa.me/5585986178977?text=${encodeURIComponent("Olá! Gostaria de um Diagnóstico Técnico (Camada 1).")}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan font-bold text-sm hover:bg-brand-cyan/20 transition-all active:scale-95"
@@ -128,7 +128,7 @@ export const BusinessModel = () => {
                                     </li>
                                 </ul>
                                 <a
-                                    href={`https://wa.me/5511999999999?text=${encodeURIComponent("Olá! Gostaria de uma proposta customizada para Reestruturação/Execução (Camada 2).")}`}
+                                    href={`https://wa.me/5585986178977?text=${encodeURIComponent("Olá! Gostaria de uma proposta customizada para Reestruturação/Execução (Camada 2).")}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-brand-purple text-white font-bold text-sm hover:scale-[1.02] transition-transform active:scale-95 shadow-[0_0_20px_rgba(147,51,234,0.3)]"
@@ -189,7 +189,7 @@ export const BusinessModel = () => {
                                 </li>
                             </ul>
                             <a
-                                href={`https://wa.me/5511999999999?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre a Consultoria Estratégica Mensal (Camada 3).")}`}
+                                href={`https://wa.me/5585986178977?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre a Consultoria Estratégica Mensal (Camada 3).")}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-brand-blue/10 border border-brand-blue/20 text-brand-blue font-bold text-sm hover:bg-brand-blue/20 transition-all transition-transform hover:scale-[1.02] active:scale-95"

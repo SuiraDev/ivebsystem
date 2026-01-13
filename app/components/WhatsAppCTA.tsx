@@ -5,7 +5,7 @@ import { Icon } from "./Icon";
 export const WhatsAppCTA = () => {
     const handleWhatsApp = () => {
         window.open(
-            `https://wa.me/5511999999999?text=${encodeURIComponent("Olá! Gostaria de um diagnóstico gratuito para meu projeto.")}`,
+            `https://wa.me/5585986178977?text=${encodeURIComponent("Olá! Gostaria de um diagnóstico gratuito para meu projeto.")}`,
             "_blank",
         );
     };

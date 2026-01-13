@@ -69,7 +69,7 @@ const jsonLd = {
       "image": "https://ivebsystem.com.br/og-image.png",
       "@id": "https://ivebsystem.com.br",
       "url": "https://ivebsystem.com.br",
-      "telephone": "",
+      "telephone": "+55 85 98617-8977",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "São Paulo",

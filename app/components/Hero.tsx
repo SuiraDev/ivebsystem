@@ -53,7 +53,7 @@ export const Hero = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
           <a 
-            href={`https://wa.me/5511999999999?text=${encodeURIComponent("Olá! Gostaria de um diagnóstico técnico para meu negócio.")}`}
+            href={`https://wa.me/5585986178977?text=${encodeURIComponent("Olá! Gostaria de um diagnóstico técnico para meu negócio.")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative px-8 py-3.5 rounded-full bg-white text-black font-bold text-sm overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]"

@@ -49,7 +49,7 @@ export const Navbar = () => {
                             </a>
                         ))}
                         <a
-                            href={`https://wa.me/5511999999999?text=${encodeURIComponent("Olá! Gostaria de falar com um especialista sobre meu projeto.")}`}
+                            href={`https://wa.me/5585986178977?text=${encodeURIComponent("Olá! Gostaria de falar com um especialista sobre meu projeto.")}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-5 py-2 text-xs font-semibold bg-white text-black rounded-full hover:bg-brand-cyan hover:text-black transition-all duration-300"
@@ -133,7 +133,7 @@ export const Navbar = () => {
                         className={`mt-10 transition-all duration-700 delay-500 ${isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
                     >
                         <a
-                            href={`https://wa.me/5511999999999?text=${encodeURIComponent("Olá! Gostaria de falar com um especialista sobre meu projeto.")}`}
+                            href={`https://wa.me/5585986178977?text=${encodeURIComponent("Olá! Gostaria de falar com um especialista sobre meu projeto.")}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => setIsOpen(false)}
